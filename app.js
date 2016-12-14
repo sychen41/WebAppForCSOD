@@ -1,65 +1,18 @@
-var express         = require("express"),
-    app             = express(),
-    bodyParser      = require("body-parser"),
-    passport        = require("passport"),
-    cookieParser    = require("cookie-parser"),
-    session         = require("express-session"),
-    Sequelize       = require("sequelize"),
-    ejs             = require("ejs"),
-    config          = require("./models/config"),
-    // require other models if needed
-    Student         = require("./models/Student_Tab");
+var express     = require('express');
+var app         = express();
+var bodyParser  = require('body-parser');
+
+//parse data in the form of x-www-form-urlencoded, http header: content-type: applicaion/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended: true})); //result in an object, use JSON.stringify() to transform to string if needed
+//parse data in the form of json, http header: content-type: applicaion/json
+app.use(bodyParser.json()); //result in an object, use JSON.stringify() to transform to string if needed
+app.use(express.static('public'));
+app.set('view engine', 'ejs');
+
+var studentsRoutes = require('./routes/students');
+app.use('/api/students/',studentsRoutes);
 
 
-// Requiring Routes
-
-// app configuration
-app.set("view engine", "ejs");
-
-
-// connect to local mysql database using sequelize
-var sequelize = new Sequelize(config.database, config.username, config.password, {
-    host: config.host,
-    dialect: 'mysql',
-    pool: {
-        max: 5,
-        min: 0,
-        idle: 30000
-    }
+app.listen('8084', process.env.IP, function(){
+    console.log('CSOD web app started...');
 });
-
-// Test sequelize connection success or not
-sequelize
-    .authenticate()
-    .then(function(err) {
-        console.log("connections has been established successfully");
-    })
-    .catch(function(err) {
-        console.log("Unable to connect to the database", err);
-    });
-
-
-
-// Landing page of the Chinese School app
-app.get('/', function(req, res) {
-    // find all rows from student_tab
-    student = Student(sequelize, Sequelize);
-    student.findAll({
-        attributes: ['StudentKey', 'LName', 'FName']
-    })
-        .then(function(students) {
-        for (var i = 0; i <= 10; i++) {
-            console.log(students[i]);
-        }
-    });
-
-
-    res.render("landing");
-});
-
-// app listen 2000 port on localhost
-app.listen(2000, function() {
-    console.log("The Chinese School Server is Running");
-});
-
-

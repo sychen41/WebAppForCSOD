@@ -1,0 +1,38 @@
+<link rel='stylesheet' type='text/css' href='/students/stylesheets/index.css'>
+<table ng-controller='IndexController' ng-show="students.length > 0" class="table table-striped table-hover">
+    Search by keyword:
+    <input type="text" ng-model="filterByKeyword" />
+    <div>&nbsp;</div>
+    <tr class="success">
+        <td>Last Name</td>
+        <td>First Name</td>
+        <td>Phone</td>
+        <td>Address</td>
+        <td>City</td>
+        <td>State</td>
+        <td>Zip Code</td>
+        <td>Country</td>
+    </tr>
+
+    <tr ng-repeat="student in students | filter: filterByKeyword | orderBy: 'emp_no'">
+        <td>{{student.contactLastName}}</td>
+        <td>{{student.contactFirstName}}</td>
+        <td>{{student.phone}}</td>
+        <td>{{student.addressLine1}}</td>
+        <td>{{student.city}}</td>
+        <td>{{student.state}}</td>
+        <td>{{student.postalCode}}</td>
+        <td>{{student.country}}</td>
+        <td class="info">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expand="false">
+                    Actions<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <button class='btn btn-success' ng-click='editStudent(student.customerNumber)'>Edit
+                    <button class='btn btn-danger' ng-click='deleteStudent(student.customerNumber)'>Delete
+                </ul>
+            </div>
+        </td>
+    </tr>
+</table>

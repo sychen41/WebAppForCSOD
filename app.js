@@ -12,7 +12,10 @@ app.set('view engine', 'ejs');
 var studentsRoutes = require('./routes/students');
 app.use('/api/students/',studentsRoutes);
 
+app.get('/', function(req, res){
+    res.render('students/index');
+});
 
 app.listen('8084', process.env.IP, function(){
-    console.log('CSOD web app started...');
+    console.log('CSOD web app is listening to 8084...');
 });

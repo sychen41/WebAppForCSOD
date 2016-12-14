@@ -1,0 +1,64 @@
+<div class="panel-body">
+    <div class="container" data-ng-cloak>
+        <form>
+            <div class="row">
+                <div class="form-group">
+                    <lable for="studentLastName">Last Name</lable>
+                    &nbsp;
+                    <input type="text" class="form-control" placeholder="Example: Smith"
+                            name="studentLastName" id="studentLastName" data-ng-model="newStudent.contactLastName" style="width:100%"
+                            required>
+
+                    <lable for="studentFirstName">First Name</lable>
+                    &nbsp;
+                    <input type="text" class="form-control" placeholder="Example: John"
+                            name="studentFirstName" id="studentFirstName" data-ng-model="newStudent.contactFirstName" style="width:100%"
+                            required>
+
+                    <lable for="studentPhone">Phone</lable>
+                    &nbsp;
+                    <input type="text" class="form-control" placeholder="Example: (302)313-6233"
+                            name="studentPhone" id="studentPhone" data-ng-model="newStudent.phone" style="width:100%"
+                            required>
+
+                    <lable for="studentAddress">Address</lable>
+                    &nbsp;
+                    <input type="text" class="form-control" placeholder="Example: 1313 Little Baltimore Road"
+                            name="studentAddress" id="studentAddress" data-ng-model="newStudent.addressLine1" style="width:100%"
+                            required>
+
+                    <lable for="studentCity">City</lable>
+                    &nbsp;
+                    <input type="text" class="form-control" placeholder="Example: Newark"
+                            name="studentCity" id="studentCity" data-ng-model="newStudent.city" style="width:100%"
+                            required>
+
+                    <lable for="studentState">State</lable>
+                    &nbsp;
+                    <input type="text" class="form-control" placeholder="Example: DE"
+                            name="studentState" id="studentState" data-ng-model="newStudent.state" style="width:100%"
+                            required>
+
+                    <lable for="studentZipcode">Zip Code</lable>
+                    &nbsp;
+                    <input type="text" class="form-control" placeholder="Example: 19707"
+                            name="studentZipcode" id="studentZipcode" data-ng-model="newStudent.postalCode" style="width:100%"
+                            required>
+
+                    <lable for="studentCountry">Country</lable>
+                    &nbsp;
+                    <input type="text" class="form-control" placeholder="Example: USA"
+                            name="studentCountry" id="studentCountry" data-ng-model="newStudent.country" style="width:100%"
+                            required>
+                </div>
+            </div>
+            <div>&nbsp;</div>
+            <div class="row">
+                <div classs="form-group" style="adding-left:40%">
+                    <button type="button" class="btn btn-primary" data-ng-click="addStudent()">Add</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

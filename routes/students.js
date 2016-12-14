@@ -6,7 +6,13 @@ var connectionStr   = require('../config').sqlConnectionStr.dev;
 //INDEX route
 router.get('/', function(req, res){
     var connection = mysql.createConnection(connectionStr);
-    getAllStudentsAndResponseAndEndConnection(connection, res);
+    connection.query('select * from customers order by customerNumber DESC', function(err, rows){
+        if (err) throw err;
+        console.log('SUCCESS: retrieve students info from db');
+        res.json(rows);
+    });
+    connection.end()
+    //getAllStudentsAndResponseAndEndConnection(connection, res);
 });
 
 //CREATE route
@@ -16,9 +22,11 @@ router.post('/', function(req, res){
     connection.query('insert into customers set?', req.body, function(err, row){
         if (err) throw err;
         console.log('SUCCESS: add new student to db');
-        console.log(row);
+        res.send('Message from server: a student is added');
+        //console.log(row);
     });
-    getAllStudentsAndResponseAndEndConnection(connection, res);
+    connection.end();
+    //getAllStudentsAndResponseAndEndConnection(connection, res);
 });
 
 //DESTROY route
@@ -28,7 +36,9 @@ router.delete('/:student_id', function(req, res){
     connection.query('delete from customers where customerNumber=?', req.params.student_id, function(err){
         if (err) throw err;
         console.log('SUCCESS: delete a student from db');
+        //res.send('Message from server: a student is deleted');
     });
+    //connection.end();
     getAllStudentsAndResponseAndEndConnection(connection, res);
 });
 
@@ -39,7 +49,7 @@ router.get('/:student_id', function(req, res){
     connection.query('select * from customers where customerNumber=?', req.params.student_id, function(err, row){
         if (err) throw err;
         console.log('SUCCESS: retrieve a student info from db');
-        res.json(row);
+        res.json(row[0]); //row is an array with length 1 (if student id is unique), so we return the first element
     });
     connection.end();
 });
@@ -51,9 +61,11 @@ router.put('/:student_id', function(req, res){
     connection.query('update customers set ? where customerNumber=?', [req.body, req.params.student_id], function(err, row){
         if (err) throw err;
         console.log('SUCCESS: update a student info in db');
-        console.log(row);
+        //console.log(row);
+        res.send('Message from server: a student is updated');
     });
-    getAllStudentsAndResponseAndEndConnection(connection, res);
+    connection.end();
+    //getAllStudentsAndResponseAndEndConnection(connection, res);
 });
 
 function getAllStudentsAndResponseAndEndConnection(connection,res) {

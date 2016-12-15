@@ -4,6 +4,7 @@ var csodApp = angular.module('csodApp', ['ngRoute', 'ngResource', 'ngTable']);
 //Routes
 csodApp.config(function ($routeProvider) {
     $routeProvider
+        //for students
         .when('/students', {
         templateUrl: 'students/pages/index.html',
         controller: 'IndexController'

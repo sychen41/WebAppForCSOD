@@ -30,6 +30,7 @@ app.get('/', function(req, res){
     res.render('students/index');
 });
 
-app.listen('8084', process.env.IP, function(){
+var port = process.env.PORT || '8084';
+app.listen(port, process.env.IP, function(){
     console.log('CSOD web app is listening to 8084...');
 });

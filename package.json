@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/sychen41/WebAppForCSOD#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "ejs": "^2.5.5",
     "express": "^4.14.0",
+    "jsonwebtoken": "^7.2.1",
     "mongoose": "^4.7.2",
     "morgan": "^1.7.0",
     "mysql": "^2.12.0"

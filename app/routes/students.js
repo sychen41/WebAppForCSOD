@@ -1,8 +1,11 @@
 var express         = require('express');
 var router          = express.Router();
 var mysql           = require('mysql');
-var connectionStr   = require('../config').sqlConnectionStr.dev;
+var connectionStr   = require('../../config').sqlConnectionStr.dev;
+var verifyToken     = require('../middleware').verifyToken;
 
+// middleware for checking token for all requests
+router.use(verifyToken);
 //INDEX route
 router.get('/', function(req, res){
     var connection = mysql.createConnection(connectionStr);
@@ -22,7 +25,7 @@ router.post('/', function(req, res){
     connection.query('insert into customers set?', req.body, function(err, row){
         if (err) throw err;
         console.log('SUCCESS: add new student to db');
-        res.send('Message from server: a student is added');
+		res.json({ message: 'student created!' });
         //console.log(row);
     });
     connection.end();
@@ -62,7 +65,8 @@ router.put('/:student_id', function(req, res){
         if (err) throw err;
         console.log('SUCCESS: update a student info in db');
         //console.log(row);
-        res.send('Message from server: a student is updated');
+		res.json({ message: 'student updated!' });
+        //res.send('Message from server: a student is updated');
     });
     connection.end();
     //getAllStudentsAndResponseAndEndConnection(connection, res);

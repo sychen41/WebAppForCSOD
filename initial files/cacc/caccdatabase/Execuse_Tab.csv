@@ -1,8 +1,11 @@
-"P","Present"
-"A","Absent"
-"S","Subsitute"
-"R","Personal"
-"K","Sick"
-"O","Official School Business"
-"T","Tardy"
-"E","Leave Early"
+P,Present
+A,Absent
+S,Subsitute
+R,Personal
+K,Sick
+O,Official School Business
+T,Tardy
+E,Leave Early
+a,Absent
+b,B
+c,C

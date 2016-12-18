@@ -1,10 +1,15 @@
 var express         = require('express');
 var router          = express.Router();
 var User            = require('../models/user');
+var verifyToken     = require('../middleware').verifyToken;
+
+// middleware for checking token for all requests
+router.use(verifyToken);
 
 //just to be fancy, we use this new way that express provides to define routes.
 router.route('/me')
 	.get(function(req, res){
+		console.log(req.decoded);
 		res.send(req.decoded);
 	});
 router.route('/')

@@ -1,64 +1,74 @@
 <div class="panel-body">
-    <div class="container" data-ng-cloak>
+    <div class="container" ng-cloak>
         <form>
             <div class="row">
                 <div class="form-group">
                     <lable for="studentLastName">Last Name</lable>
                     &nbsp;
                     <input type="text" class="form-control" placeholder="Example: Smith"
-                            name="studentLastName" id="studentLastName" data-ng-model="newStudent.contactLastName" style="width:100%"
+                            name="studentLastName" id="studentLastName" ng-model="student.newStudent.contactLastName" style="width:100%"
                             required>
 
                     <lable for="studentFirstName">First Name</lable>
                     &nbsp;
                     <input type="text" class="form-control" placeholder="Example: John"
-                            name="studentFirstName" id="studentFirstName" data-ng-model="newStudent.contactFirstName" style="width:100%"
+                            name="studentFirstName" id="studentFirstName" ng-model="student.newStudent.contactFirstName" style="width:100%"
                             required>
 
                     <lable for="studentPhone">Phone</lable>
                     &nbsp;
                     <input type="text" class="form-control" placeholder="Example: (302)313-6233"
-                            name="studentPhone" id="studentPhone" data-ng-model="newStudent.phone" style="width:100%"
+                            name="studentPhone" id="studentPhone" ng-model="student.newStudent.phone" style="width:100%"
                             required>
 
                     <lable for="studentAddress">Address</lable>
                     &nbsp;
                     <input type="text" class="form-control" placeholder="Example: 1313 Little Baltimore Road"
-                            name="studentAddress" id="studentAddress" data-ng-model="newStudent.addressLine1" style="width:100%"
+                            name="studentAddress" id="studentAddress" ng-model="student.newStudent.addressLine1" style="width:100%"
                             required>
 
                     <lable for="studentCity">City</lable>
                     &nbsp;
                     <input type="text" class="form-control" placeholder="Example: Newark"
-                            name="studentCity" id="studentCity" data-ng-model="newStudent.city" style="width:100%"
+                            name="studentCity" id="studentCity" ng-model="student.newStudent.city" style="width:100%"
                             required>
 
                     <lable for="studentState">State</lable>
                     &nbsp;
                     <input type="text" class="form-control" placeholder="Example: DE"
-                            name="studentState" id="studentState" data-ng-model="newStudent.state" style="width:100%"
+                            name="studentState" id="studentState" ng-model="student.newStudent.state" style="width:100%"
                             required>
 
                     <lable for="studentZipcode">Zip Code</lable>
                     &nbsp;
                     <input type="text" class="form-control" placeholder="Example: 19707"
-                            name="studentZipcode" id="studentZipcode" data-ng-model="newStudent.postalCode" style="width:100%"
+                            name="studentZipcode" id="studentZipcode" ng-model="student.newStudent.postalCode" style="width:100%"
                             required>
 
                     <lable for="studentCountry">Country</lable>
                     &nbsp;
                     <input type="text" class="form-control" placeholder="Example: USA"
-                            name="studentCountry" id="studentCountry" data-ng-model="newStudent.country" style="width:100%"
+                            name="studentCountry" id="studentCountry" ng-model="student.newStudent.country" style="width:100%"
                             required>
                 </div>
             </div>
             <div>&nbsp;</div>
             <div class="row">
-                <div classs="form-group" style="adding-left:40%">
-                    <button type="button" class="btn btn-primary" data-ng-click="addStudent()">Add</button>
+                <div classs="form-group"> 
+                    <button type="button" class="btn btn-primary" ng-click="student.saveStudent()">
+		        <span ng-if="!student.processing">Add</span>
+                        <span ng-if="student.processing"><span class="glyphicon glyphicon-repeat spinner"></span></span>
+                    </button>
                 </div>
-
+            </div>
+            <div class="row show-hide-message" ng-show="student.message">
+                <div classs="form-group"> 
+                    <div class="alert alert-info studentFormMessage">
+                        {{ student.message }}
+                    </div>
+                </div>
             </div>
         </form>
+
     </div>
 </div>

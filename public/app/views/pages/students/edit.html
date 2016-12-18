@@ -6,58 +6,68 @@
                     <lable for="studentLastName">Last Name</lable>
                     &nbsp;
                     <input type="text" class="form-control"
-                            name="studentLastName" id="studentLastName" data-ng-model="theStudent.contactLastName" style="width:100%"
+                            name="studentLastName" id="studentLastName" data-ng-model="student.theStudent.contactLastName" style="width:100%"
                             required>
 
                     <lable for="">First Name</lable>
                     &nbsp;
                     <input type="text" class="form-control"
-                            name="studentFirstName" id="studentFirstName" data-ng-model="theStudent.contactFirstName" style="width:100%"
+                            name="studentFirstName" id="studentFirstName" data-ng-model="student.theStudent.contactFirstName" style="width:100%"
                             required>
 
                     <lable for="">Phone</lable>
                     &nbsp;
                     <input type="text" class="form-control"
-                            name="studentPhone" id="studentPhone" data-ng-model="theStudent.phone" style="width:100%"
+                            name="studentPhone" id="studentPhone" data-ng-model="student.theStudent.phone" style="width:100%"
                             required>
 
                     <lable for="">Address</lable>
                     &nbsp;
                     <input type="text" class="form-control"
-                            name="studentAddress" id="studentAddress" data-ng-model="theStudent.addressLine1" style="width:100%"
+                            name="studentAddress" id="studentAddress" data-ng-model="student.theStudent.addressLine1" style="width:100%"
                             required>
 
                     <lable for="">City</lable>
                     &nbsp;
                     <input type="text" class="form-control"
-                            name="studentCity" id="studentCity" data-ng-model="theStudent.city" style="width:100%"
+                            name="studentCity" id="studentCity" data-ng-model="student.theStudent.city" style="width:100%"
                             required>
 
                     <lable for="">State</lable>
                     &nbsp;
                     <input type="text" class="form-control"
-                            name="studentState" id="studentState" data-ng-model="theStudent.state" style="width:100%"
+                            name="studentState" id="studentState" data-ng-model="student.theStudent.state" style="width:100%"
                             required>
 
                     <lable for="">Zip Code</lable>
                     &nbsp;
                     <input type="text" class="form-control"
-                            name="studentZipcode" id="studentZipcode" data-ng-model="theStudent.postalCode" style="width:100%"
+                            name="studentZipcode" id="studentZipcode" data-ng-model="student.theStudent.postalCode" style="width:100%"
                             required>
 
                     <lable for="">Country</lable>
                     &nbsp;
                     <input type="text" class="form-control"
-                            name="studentCountry" id="studentCountry" data-ng-model="theStudent.country" style="width:100%"
+                            name="studentCountry" id="studentCountry" data-ng-model="student.theStudent.country" style="width:100%"
                             required>
                 </div>
             </div>
             <div>&nbsp;</div>
             <div class="row">
                 <div classs="form-group" style="adding-left:40%">
-                    <button type="button" class="btn btn-primary" data-ng-click="updateStudent()">Done</button>
+                    <button type="button" class="btn btn-primary" data-ng-click="student.updateStudent()">Done
+		        <span ng-if="!student.processing">Update</span>
+                        <span ng-if="student.processing"><span class="glyphicon glyphicon-repeat spinner"></span></span>
+                    </button>
                 </div>
 
+            </div>
+            <div class="row show-hide-message" ng-show="student.message">
+                <div classs="form-group"> 
+                    <div class="alert alert-info studentFormMessage">
+                        {{ student.message }}
+                    </div>
+                </div>
             </div>
         </form>
     </div>

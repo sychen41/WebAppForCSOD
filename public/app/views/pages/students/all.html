@@ -1,0 +1,31 @@
+<div class="page-header">
+	<h1>
+        Students
+		<a href="/students/new" class="btn btn-default">
+			<span class="glyphicon glyphicon-plus"></span> 
+			New Student 
+		</a>
+	</h1>
+
+</div>
+
+<!--
+<div class="jumbotron text-center" ng-show="user.processing">
+	<span class="glyphicon glyphicon-repeat spinner"></span>
+	<p>Loading Students...</p>
+</div
+-->
+
+<table ng-table="student.tableParams" class="table table-condensed table-bordered table-striped">
+    <!--'student' is used as the controllerAs name, so we use stu in the following line -->
+    <tr ng-repeat="stu in $data">
+        <td data-title="'Last name'" filter="{contactLastName: 'text'}" sortable="'contactLastName'">{{stu.contactLastName}}</td>
+        <td data-title="'Phone'" filter="{phone: 'text'}" sortable="'phone'">{{stu.phone}}</td>
+        <td class='actionBtn'>
+            <a href='/students/{{stu.customerNumber}}/edit' class='btn btn-success btn-xs'>Edit</a>
+        </td>
+        <td class='actionBtn'>
+            <button class='btn btn-danger btn-xs' ng-click='student.deleteStudent(stu.customerNumber)'>Delete
+        </td>
+    </tr>
+</table

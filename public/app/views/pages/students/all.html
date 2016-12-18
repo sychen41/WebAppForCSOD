@@ -22,7 +22,10 @@
         <td data-title="'Last name'" filter="{LName: 'text'}" sortable="'LName'">{{stu.LName}}</td>
         <td data-title="'First name'" filter="{FName: 'text'}" sortable="'FName'">{{stu.FName}}</td>
         <td data-title="'Chinese name'" filter="{CName: 'text'}" sortable="'CName'">{{stu.CName}}</td>
-        <td data-title="'Date Of Birth'" filter="{DOB: 'text'}" sortable="'DOB'">{{stu.DOB}}</td>
+        <td data-title="'Date Of Birth'" filter="{DOB: 'text'}" sortable="'DOB'">{{student.parseDate(stu.DOB)}}</td>
+        <td data-title="'Grade'" filter="{Grade: 'text'}" sortable="'Grade'">{{stu.Grade}}</td>
+        <td data-title="'Age'" filter="{ofYrs: 'number'}" sortable="'ofYrs'">{{stu.ofYrs}}</td>
+        <td data-title="'Tuition'" filter="{Tuition: 'number'}" sortable="'Tuition'">{{stu.Tuition}}</td>
         <td data-title="'Check'" filter="{Check: 'number'}" sortable="'Check'">{{stu.Check}}</td>
         <td class='actionBtn'>
             <a href='/students/{{stu.StudentKey}}/edit' class='btn btn-success btn-xs'>Edit</a>

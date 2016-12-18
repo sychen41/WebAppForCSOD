@@ -23,7 +23,8 @@ router.get('/', function(req, res){
 router.post('/', function(req, res){
     var connection = mysql.createConnection(connectionStr);
     connection.connect();
-    connection.query('insert into customers set?', req.body, function(err, row){
+    //connection.query('insert into customers set?', req.body, function(err, row){
+    connection.query('insert into Student_Tab set?', req.body, function(err, row){
         if (err) throw err;
         console.log('SUCCESS: add new student to db');
 		res.json({ message: 'student created!' });
@@ -37,7 +38,8 @@ router.post('/', function(req, res){
 router.delete('/:student_id', function(req, res){
     var connection = mysql.createConnection(connectionStr);
     connection.connect();
-    connection.query('delete from customers where customerNumber=?', req.params.student_id, function(err){
+    //connection.query('delete from customers where customerNumber=?', req.params.student_id, function(err){
+    connection.query('delete from Student_Tab where StudentKey=?', req.params.student_id, function(err){
         if (err) throw err;
         console.log('SUCCESS: delete a student from db');
         //res.send('Message from server: a student is deleted');
@@ -50,7 +52,8 @@ router.delete('/:student_id', function(req, res){
 router.get('/:student_id', function(req, res){
     var connection = mysql.createConnection(connectionStr);
     connection.connect();
-    connection.query('select * from customers where customerNumber=?', req.params.student_id, function(err, row){
+    //connection.query('select * from customers where customerNumber=?', req.params.student_id, function(err, row){
+    connection.query('select * from Student_Tab where StudentKey=?', req.params.student_id, function(err, row){
         if (err) throw err;
         console.log('SUCCESS: retrieve a student info from db');
         res.json(row[0]); //row is an array with length 1 (if student id is unique), so we return the first element
@@ -62,7 +65,8 @@ router.get('/:student_id', function(req, res){
 router.put('/:student_id', function(req, res){
     var connection = mysql.createConnection(connectionStr);
     connection.connect();
-    connection.query('update customers set ? where customerNumber=?', [req.body, req.params.student_id], function(err, row){
+    //connection.query('update customers set ? where customerNumber=?', [req.body, req.params.student_id], function(err, row){
+    connection.query('update Student_Tab set ? where StudentKey=?', [req.body, req.params.student_id], function(err, row){
         if (err) throw err;
         console.log('SUCCESS: update a student info in db');
         //console.log(row);
@@ -74,7 +78,8 @@ router.put('/:student_id', function(req, res){
 });
 
 function getAllStudentsAndResponseAndEndConnection(connection,res) {
-    connection.query('select * from customers order by customerNumber DESC', function(err, rows){
+    //connection.query('select * from customers order by customerNumber DESC', function(err, rows){
+    connection.query('select * from Student_Tab', function(err, rows){
         if (err) throw err;
         console.log('SUCCESS: retrieve students info from db');
         res.json(rows);

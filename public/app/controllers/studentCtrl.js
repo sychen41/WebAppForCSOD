@@ -27,6 +27,15 @@ angular.module('studentCtrl', ['ngTable', 'studentService'])
                 console.log("Error:" + err);
             });
     };
+    vm.parseDate = function(dateStr) {
+        if (dateStr) {
+            var dateArr = dateStr.split(" ");
+            return dateArr[1] + " " + dateArr[2] + " " + dateArr[dateArr.length-1];
+        } else {
+            return "Not found";
+        }
+        //return Date.parse(dateStr);
+    }
 })
 
 .controller('studentCreateController', function(Student){

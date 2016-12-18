@@ -7,7 +7,7 @@ angular.module('studentCtrl', ['ngTable', 'studentService'])
         .success(function(data){
             //$scope.students = data;
             vm.processing = false;
-            console.log(data);
+            //console.log(data);
             vm.tableParams = new NgTableParams({},{dataset: data});
         })
         .error(function(err){

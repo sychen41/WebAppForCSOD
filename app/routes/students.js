@@ -1,7 +1,7 @@
 var express         = require('express');
 var router          = express.Router();
 var mysql           = require('mysql');
-var connectionStr   = require('../../config').sqlConnectionStr.dev;
+var connectionStr   = require('../../config').sqlConnectionStr.prod;
 var verifyToken     = require('../middleware').verifyToken;
 
 // middleware for checking token for all requests
@@ -9,7 +9,8 @@ router.use(verifyToken);
 //INDEX route
 router.get('/', function(req, res){
     var connection = mysql.createConnection(connectionStr);
-    connection.query('select * from customers order by customerNumber DESC', function(err, rows){
+    //connection.query('select * from customers order by customerNumber DESC', function(err, rows){
+    connection.query('select * from Student_Tab', function(err, rows){
         if (err) throw err;
         console.log('SUCCESS: retrieve students info from db');
         res.json(rows);

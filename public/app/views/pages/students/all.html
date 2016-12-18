@@ -19,13 +19,16 @@
 <table ng-table="student.tableParams" class="table table-condensed table-bordered table-striped">
     <!--'student' is used as the controllerAs name, so we use stu in the following line -->
     <tr ng-repeat="stu in $data">
-        <td data-title="'Last name'" filter="{contactLastName: 'text'}" sortable="'contactLastName'">{{stu.contactLastName}}</td>
-        <td data-title="'Phone'" filter="{phone: 'text'}" sortable="'phone'">{{stu.phone}}</td>
+        <td data-title="'Last name'" filter="{LName: 'text'}" sortable="'LName'">{{stu.LName}}</td>
+        <td data-title="'First name'" filter="{FName: 'text'}" sortable="'FName'">{{stu.FName}}</td>
+        <td data-title="'Chinese name'" filter="{CName: 'text'}" sortable="'CName'">{{stu.CName}}</td>
+        <td data-title="'Date Of Birth'" filter="{DOB: 'text'}" sortable="'DOB'">{{stu.DOB}}</td>
+        <td data-title="'Check'" filter="{Check: 'number'}" sortable="'Check'">{{stu.Check}}</td>
         <td class='actionBtn'>
-            <a href='/students/{{stu.customerNumber}}/edit' class='btn btn-success btn-xs'>Edit</a>
+            <a href='/students/{{stu.StudentKey}}/edit' class='btn btn-success btn-xs'>Edit</a>
         </td>
         <td class='actionBtn'>
-            <button class='btn btn-danger btn-xs' ng-click='student.deleteStudent(stu.customerNumber)'>Delete
+            <button class='btn btn-danger btn-xs' ng-click='student.deleteStudent(stu.StudentKey)'>Delete
         </td>
     </tr>
 </table

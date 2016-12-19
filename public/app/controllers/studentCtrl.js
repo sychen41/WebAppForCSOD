@@ -30,24 +30,28 @@ angular.module('studentCtrl', ['ngTable', 'studentService'])
     vm.parseDate = function(dateStr) {
         if (dateStr) {
             var dateArr = dateStr.split(" ");
+            if(dateArr.length == 1) {
+                return new Date(dateStr).toDateString();
+            }
             return dateArr[1] + " " + dateArr[2] + " " + dateArr[dateArr.length-1];
         } else {
             return "Not found";
         }
-        //return Date.parse(dateStr);
     }
 })
 
 .controller('studentCreateController', function(Student){
     var vm = this;
-    vm.newStudent = {};
+    vm.type = 'create';
+    vm.theStudent = {};
     vm.saveStudent = function() {
         vm.processing = true;
-        Student.addStudent(vm.newStudent)
+        //vm.theStudent.DOB = new Date(vm.theStudent.DOB).toDateString();
+        Student.addStudent(vm.theStudent)
             .success(function(data){
                 vm.processing = false;
                 vm.message = data.message;
-                vm.newStudent = {};
+                vm.theStudent = {};
                 //$location.path('/students'); 
             })
             .error(function(err){
@@ -58,6 +62,7 @@ angular.module('studentCtrl', ['ngTable', 'studentService'])
 
 .controller('studentEditController',function($routeParams, Student){
     var vm = this;
+    vm.type = 'edit';
     Student.getStudentById($routeParams.id)
             .success(function(data){
                 vm.theStudent = data;
@@ -65,7 +70,7 @@ angular.module('studentCtrl', ['ngTable', 'studentService'])
             .error(function(err){
                 console.log("Error:" + err);
             });
-    vm.updateStudent = function() {
+    vm.saveStudent = function() {
         vm.processing = true;
         Student.updateStudent($routeParams.id, vm.theStudent)
             .success(function(data){

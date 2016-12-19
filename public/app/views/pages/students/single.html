@@ -1,0 +1,80 @@
+<div class="page-header">
+	<h1 ng-if="student.type == 'create'">Add Student</h1>
+	<h1 ng-if="student.type == 'edit'">Edit Student</h1>
+</div>
+
+<div class="panel-body">
+    <div class="container" ng-cloak>
+        <form ng-submit='student.saveStudent()'>
+            <div class="row">
+                <div class="form-group">
+                    <lable for="studentLastName">Last Name</lable>
+                    &nbsp;
+                    <input type="text" class="form-control"
+                            id="studentLastName" data-ng-model="student.theStudent.LName" style="width:100%"
+                            required>
+
+                    <lable for="">First Name</lable>
+                    &nbsp;
+                    <input type="text" class="form-control"
+                            id="" data-ng-model="student.theStudent.FName" style="width:100%"
+                            required>
+
+                    <lable for="">Chinese Name</lable>
+                    &nbsp;
+                    <input type="text" class="form-control"
+                            id="" data-ng-model="student.theStudent.CName" style="width:100%"
+                            >
+
+                    <div ng-if="student.type == 'create'">
+                        <lable for="">Date Of Birth</lable>
+                        &nbsp;
+                        <input type="date" class="form-control"
+                                id="" data-ng-model="student.theStudent.DOB" style="width:100%"
+                                >
+                    </div>
+
+                    <lable for="">Grade</lable>
+                    &nbsp;
+                    <input type="text" class="form-control"
+                            id="" data-ng-model="student.theStudent.Grade" style="width:100%"
+                            >
+
+                    <lable for="">Age</lable>
+                    &nbsp;
+                    <input type="text" class="form-control"
+                            id="" data-ng-model="student.theStudent.ofYrs" style="width:100%"
+                            >
+
+                    <lable for="">Tuition</lable>
+                    &nbsp;
+                    <input type="text" class="form-control"
+                            id="" data-ng-model="student.theStudent.Tuition" style="width:100%"
+                            required>
+
+                    <lable for="">Check</lable>
+                    &nbsp;
+                    <input type="text" class="form-control"
+                            id="" data-ng-model="student.theStudent.Check" style="width:100%"
+                            required>
+                </div>
+            </div>
+            <div>&nbsp;</div>
+            <div class="row">
+                <div classs="form-group"> 
+                    <button type="submit" class="btn btn-success btn-lg" ng-if="student.type == 'create'">Add Student</button>
+                    <button type="submit" class="btn btn-success btn-lg" ng-if="student.type == 'edit'">Update Student</button>            
+                    <span ng-if="student.processing"><span class="glyphicon glyphicon-repeat spinner"></span></span>
+                </div>
+            </div>
+            <div class="row show-hide-message" ng-show="student.message">
+                <div classs="form-group"> 
+                    <button class="alert alert-info studentFormMessage">
+                        {{ student.message }}
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

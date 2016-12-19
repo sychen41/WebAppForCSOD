@@ -16,22 +16,29 @@ router.get('/', function(req, res){
         res.json(rows);
     });
     connection.end()
-    //getAllStudentsAndResponseAndEndConnection(connection, res);
 });
 
 //CREATE route
 router.post('/', function(req, res){
     var connection = mysql.createConnection(connectionStr);
     connection.connect();
-    //connection.query('insert into customers set?', req.body, function(err, row){
-    connection.query('insert into Student_Tab set?', req.body, function(err, row){
+    connection.query('select StudentKey from primaryKeys', function(err, rows){
         if (err) throw err;
-        console.log('SUCCESS: add new student to db');
-		res.json({ message: 'student created!' });
-        //console.log(row);
+        var studentKey = rows[0].StudentKey;
+        console.log(typeof studentKey);
+        req.body.StudentKey = studentKey;
+        //connection.query('insert into customers set?', req.body, function(err, row){
+        connection.query('insert into Student_Tab set?', req.body, function(err, row){
+            if (err) throw err;
+            console.log('SUCCESS: add new student to db');
+            res.json({ message: 'student created!' });
+            //console.log(row);
+            connection.query('update primaryKeys set StudentKey=? where StudentKey=?', [studentKey+1, studentKey], function(err){
+                if (err) throw err;
+                connection.end();
+            });
+        });
     });
-    connection.end();
-    //getAllStudentsAndResponseAndEndConnection(connection, res);
 });
 
 //DESTROY route
@@ -43,9 +50,13 @@ router.delete('/:student_id', function(req, res){
         if (err) throw err;
         console.log('SUCCESS: delete a student from db');
         //res.send('Message from server: a student is deleted');
+        connection.query('select * from Student_Tab', function(err, rows){
+            if (err) throw err;
+            console.log('SUCCESS: retrieve students info from db');
+            res.json(rows);
+            connection.end();
+        });
     });
-    //connection.end();
-    getAllStudentsAndResponseAndEndConnection(connection, res);
 });
 
 //SHOW route
@@ -74,16 +85,7 @@ router.put('/:student_id', function(req, res){
         //res.send('Message from server: a student is updated');
     });
     connection.end();
-    //getAllStudentsAndResponseAndEndConnection(connection, res);
 });
 
-function getAllStudentsAndResponseAndEndConnection(connection,res) {
-    //connection.query('select * from customers order by customerNumber DESC', function(err, rows){
-    connection.query('select * from Student_Tab', function(err, rows){
-        if (err) throw err;
-        console.log('SUCCESS: retrieve students info from db');
-        res.json(rows);
-    });
-    connection.end();
-}
+
 module.exports = router;

@@ -45,12 +45,12 @@ angular.module('app.routes', ['ngRoute'])
 			controllerAs: 'student'
         })
         .when('/students/new', {
-			templateUrl: 'app/views/pages/students/new.html',
+			templateUrl: 'app/views/pages/students/single.html',
             controller: 'studentCreateController',
 			controllerAs: 'student'
         })
         .when('/students/:id/edit', {
-			templateUrl: 'app/views/pages/students/edit.html',
+			templateUrl: 'app/views/pages/students/single.html',
             controller: 'studentEditController',
 			controllerAs: 'student'
         });

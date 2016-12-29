@@ -43,7 +43,7 @@ app.get('*', function(req, res) {
 });
 //END OF ROUTES
 
-var port = process.env.PORT || '8084';
+var port = process.env.PORT || '8085';
 app.listen(port, process.env.IP, function(){
-	console.log('CSOD web app is listening to 8084...');
+	console.log('CSOD web app is listening to 8085...');
 });

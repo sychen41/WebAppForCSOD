@@ -45,5 +45,5 @@ app.get('*', function(req, res) {
 
 var port = process.env.PORT || '8085';
 app.listen(port, process.env.IP, function(){
-	console.log('CSOD web app is listening to 8085...');
+	console.log('CSOD web app is listening to ' + port);
 });

@@ -17,6 +17,10 @@ header .navbar 		{
 	width: 130px;
 	text-align: center;
 }
+
+.fakeDataMessage {
+	margin: 0;
+}
 /* ANIMATIONS
 ====================== */
 .spinner {

@@ -52,4 +52,23 @@ router.post('/', function(req, res) {
 	});
 });
 
+router.post('/demoUser', function(req, res){
+	// look for the user named demo 
+	User.findOne({ 'username': 'demo' }, function(err, user) {
+		console.log('demo user found');
+		// if there is no demo user, create one
+		if (!user) {
+			var demoUser = new User();
+			demoUser.name = 'Demo';  
+			demoUser.username = 'demo'; 
+			demoUser.password = '1234';
+			demoUser.save();
+		} 
+		res.json({
+			success: true,
+			message: 'Account created, please use it to login'
+		});
+	});
+});
+
 module.exports = router;

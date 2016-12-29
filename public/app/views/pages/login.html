@@ -1,4 +1,14 @@
 <div class="row col-md-6 col-md-offset-3">
+
+	<div class="alert alert-info">
+		<p>Create a sample user account for demo purpose</p>
+		<p><strong>Username</strong>: demo</p>
+		<p><strong>Password</strong>: 1234</p>
+		<p><a href="#" ng-click="login.createDemoUser()" class="btn btn-sm btn-primary">Create account</a></p>
+	</div>
+	<div class="alert alert-success show-hide-message" ng-if="login.demoUserCreated">
+		{{ login.demoUserMessage }}
+	</div>
 	
 	<div class="jumbotron">
 		<h1>Login</h1>		

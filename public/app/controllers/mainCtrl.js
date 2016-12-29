@@ -52,10 +52,13 @@ angular.module('mainCtrl', [])
 		$location.path('/login');
 	};
 
-/*
-	vm.createSample = function() {
-		Auth.createSampleUser();
+	//create demo user
+	vm.createDemoUser = function() {
+		Auth.createDemoUser()
+			.then(function(data){
+				vm.demoUserCreated = data.data.success;
+				vm.demoUserMessage = data.data.message;
+			});
 	};
-    */
 
 });

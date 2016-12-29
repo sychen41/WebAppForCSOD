@@ -33,7 +33,7 @@ angular.module('mainCtrl', [])
 				// if a user successfully logs in, redirect to users page
 				if (data.success) {
 					console.log('user autheticated');
-					$location.path('/users');
+					$location.path('/students');
 				}	
 				else {
 					console.log('user not autheticated');

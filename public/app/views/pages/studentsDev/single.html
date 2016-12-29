@@ -1,0 +1,59 @@
+<div class="page-header">
+	<h1 ng-if="student.type == 'create'">Add Student</h1>
+	<h1 ng-if="student.type == 'edit'">Edit Student</h1>
+</div>
+
+<div class="panel-body">
+    <div class="container" ng-cloak>
+        <form ng-submit='student.saveStudent()'>
+            <div class="row">
+                <div class="form-group">
+                    <lable for="studentLastName">Last Name</lable>
+ -                    &nbsp;
+ -                    <input type="text" class="form-control" placeholder="Example: Smith"
+ -                            name="studentLastName" id="studentLastName" ng-model="student.theStudent.contactLastName" style="width:100%"
+ -                            required>
+ -
+ -                    <lable for="studentFirstName">First Name</lable>
+ -                    &nbsp;
+ -                    <input type="text" class="form-control" placeholder="Example: John"
+ -                            name="studentFirstName" id="studentFirstName" ng-model="student.theStudent.contactFirstName" style="width:100%"
+ -                            required>
+ -
+ -                    <lable for="studentAddress">Address</lable>
+ -                    &nbsp;
+ -                    <input type="text" class="form-control" placeholder="Example: 1313 Little Baltimore Road"
+ -                            name="studentAddress" id="studentAddress" ng-model="student.theStudent.addressLine1" style="width:100%"
+ -                            >
+ -
+ -                    <lable for="studentCity">City</lable>
+ -                    &nbsp;
+ -                    <input type="text" class="form-control" placeholder="Example: Newark"
+ -                            name="studentCity" id="studentCity" ng-model="student.theStudent.city" style="width:100%"
+ -                            >
+ -
+ -                    <lable for="studentCountry">Country</lable>
+ -                    &nbsp;
+ -                    <input type="text" class="form-control" placeholder="Example: USA"
+ -                            name="studentCountry" id="studentCountry" ng-model="student.theStudent.country" style="width:100%"
+ -                            >
+                </div>
+            <div>&nbsp;</div>
+            <div class="row">
+                <div classs="form-group"> 
+                    <button type="submit" class="btn btn-success btn-lg" ng-if="student.type == 'create'">Add Student</button>
+                    <button type="submit" class="btn btn-success btn-lg" ng-if="student.type == 'edit'">Update Student</button>            
+                    <span ng-if="student.processing"><span class="glyphicon glyphicon-repeat spinner"></span></span>
+                </div>
+            </div>
+            <div class="row show-hide-message" ng-show="student.message">
+                <div classs="form-group"> 
+                    <button class="alert alert-info studentFormMessage">
+                        {{ student.message }}
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

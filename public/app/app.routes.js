@@ -40,17 +40,17 @@ angular.module('app.routes', ['ngRoute'])
 
         //for students
         .when('/students', {
-			templateUrl: 'app/views/pages/students/all.html',
+			templateUrl: 'app/views/pages/studentsDev/all.html',
         	controller: 'studentController',
 			controllerAs: 'student'
         })
         .when('/students/new', {
-			templateUrl: 'app/views/pages/students/single.html',
+			templateUrl: 'app/views/pages/studentsDev/single.html',
             controller: 'studentCreateController',
 			controllerAs: 'student'
         })
         .when('/students/:id/edit', {
-			templateUrl: 'app/views/pages/students/single.html',
+			templateUrl: 'app/views/pages/studentsDev/single.html',
             controller: 'studentEditController',
 			controllerAs: 'student'
         });

@@ -1,0 +1,35 @@
+<div class="page-header">
+	<h1>
+        Students
+		<a href="/students/new" class="btn btn-default">
+			<span class="glyphicon glyphicon-plus"></span> 
+			New Student 
+		</a>
+	</h1>
+
+</div>
+
+<!--
+<div class="jumbotron text-center" ng-show="user.processing">
+	<span class="glyphicon glyphicon-repeat spinner"></span>
+	<p>Loading Students...</p>
+</div
+-->
+
+<table ng-table="student.tableParams" class="table table-condensed table-bordered table-striped">
+    <!--'student' is used as the controllerAs name, so we use stu in the following line -->
+    <tr ng-repeat="stu in $data">
+        <td data-title="'Last name'" filter="student.lastNameFilter" sortable="'contactLastName'">{{stu.contactLastName}}</td>
+        <td data-title="'First name'" filter="student.firstNameFilter" sortable="'contactFirstName'">{{stu.contactFirstName}}</td>
+        <td data-title="'Address'" filter="student.addressFilter" sortable="'addressLine1'">{{stu.addressLine1}}</td>
+        <td data-title="'City'" filter="student.cityFilter" sortable="'city'">{{stu.city}}</td>
+        <td data-title="'Country'" filter="student.countryFilter" sortable="'country'">{{stu.country}}</td>
+
+        <td class='actionBtn'>
+            <a href='/students/{{stu.customerNumber}}/edit' class='btn btn-success btn-xs'>Edit</a>
+        </td>
+        <td class='actionBtn'>
+            <button class='btn btn-danger btn-xs' ng-click='student.deleteStudent(stu.customerNumber)'>Delete
+        </td>
+    </tr>
+</table>

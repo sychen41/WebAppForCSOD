@@ -4,9 +4,8 @@ var User            = require('../models/user');
 var secret          = require('../../config').secret;
 var jwt             = require('jsonwebtoken');
 
-// route to authenticate a user (POST http://localhost:8080/api/authenticate)
+// route to authenticate a user (POST http://localhost:8084/api/authenticate)
 router.post('/', function(req, res) {
-
 	// find the user
 	User.findOne({
 	username: req.body.username

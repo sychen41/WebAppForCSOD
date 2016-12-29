@@ -3,6 +3,36 @@ angular.module('studentCtrl', ['ngTable', 'studentService'])
 .controller('studentController', function(NgTableParams, Student) {
     var vm = this;
     vm.processing = true;
+    vm.lastNameFilter = {
+        contactLastName: {
+            id: "text",
+            placeholder: "Filter by Last Name"
+        }
+    };
+    vm.firstNameFilter = {
+        contactFirstName: {
+            id: "text",
+            placeholder: "Filter by First Name"
+        }
+    };
+    vm.addressFilter = {
+        addressLine1: {
+            id: "text",
+            placeholder: "Filter by Address"
+        }
+    };
+    vm.cityFilter = {
+        city: {
+            id: "text",
+            placeholder: "Filter by City"
+        }
+    };
+    vm.countryFilter = {
+        country: {
+            id: "text",
+            placeholder: "Filter by Country"
+        }
+    };
     Student.getStudents()
         .success(function(data){
             //$scope.students = data;

@@ -1,16 +1,12 @@
-# Student Management System (In progress)
-This is a single-page web app developped for a school(CSOD)
+# Single-Page App: Delaware Chinese School Info System 
+Link: https://goo.gl/Bmv4JY 
 
-Development stack: MEAN and MySQL
+Stack: AngularJS, Node.js, Express.js, MongoDB, MySQL, Amazon EC2&RDS 
 
-Goal: to provide an convenient tool for the school to manage information of their students. 
+● Provided a convenient tool for the school to manage information of their students. 
 
-● Working in close concert with clients(school staffs) to ensure that the app meets their requirements.
+● Worked in close concert with clients (school staﬀs) to ensure that the app met their requirements 
 
-● Node.js for the RESTful API, and AngularJS for the SPA.
+● Built a RESTful API that interacts with databases, serves data in JSON format, and handles user authentication by using JSON Web Tokens (JWT) to enable CORS and protect against CSRF attacks. 
 
-● Token Authentication (JWT)
-
-● Running the app in Amazon Elastic Compute Cloud(EC2).
-
-
+● Developed frontend and backend separately to make it easy to add other clients (e.g., a mobile app). 

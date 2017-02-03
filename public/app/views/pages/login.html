@@ -7,10 +7,10 @@
 		<p><strong>Password</strong>: 1234</p>
 		<p><a href="#" ng-click="login.createDemoUser()" class="btn btn-sm btn-primary">Create account</a></p>
 	</div>
-	-->
 	<div class="alert alert-success show-hide-message" ng-if="login.demoUserCreated">
 		{{ login.demoUserMessage }}
 	</div>
+	-->
 	
 	<div class="jumbotron">
 		<h1>Login</h1>		
@@ -30,14 +30,6 @@
 			<div class="alert alert-danger show-hide-message" ng-if="login.error">
 				{{ login.error }}
 			</div>
-
-			<!--
-			<div class="show-hide-message" ng-show="login.error">
-				<div class="alert alert-danger">
-					{{ login.error }}
-				</div>
-			</div>
-			-->
 
 			<button type="submit" class="btn btn-block btn-primary">
 				<span ng-if="!login.processing">Login</span>

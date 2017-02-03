@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({extended: true})); //result in an object, use JSO
 app.use(bodyParser.json()); //result in an object, use JSON.stringify() to transform to string if needed
 
 // log client request info to console
-app.use(morgan('dev'));
+//app.use(morgan('dev'));
 
 app.use(express.static(__dirname + '/public'));
 

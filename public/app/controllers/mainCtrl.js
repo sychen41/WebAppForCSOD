@@ -12,10 +12,13 @@ angular.module('mainCtrl', [])
 		vm.loggedIn = Auth.isLoggedIn();	
 
 		// get user information on page load
+		/*
 		Auth.getUser()
 			.then(function(data) {
 				vm.user = data.data;
+				//console.log(vm.user);
 			});	
+			*/
 	});	
 
 	// function to handle login form
@@ -48,7 +51,6 @@ angular.module('mainCtrl', [])
 	vm.doLogout = function() {
 		Auth.logout();
 		vm.user = '';
-		
 		$location.path('/login');
 	};
 

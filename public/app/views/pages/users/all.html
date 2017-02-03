@@ -6,7 +6,6 @@
 			New User
 		</a>
 	</h1>
-	<p class='alert alert-warning fakeDataMessage'>These are fake data for demo purpose, manipulate it to your heart's content</p>
 </div>
 
 <div class="jumbotron text-center" ng-show="user.processing">
@@ -34,3 +33,6 @@
 		</tr>
 	</tbody>
 </table>
+<div class="row show-hide-message" ng-show="user.message">
+    <div class="alert alert-danger" role="alert">{{user.message}}</div>
+</div>

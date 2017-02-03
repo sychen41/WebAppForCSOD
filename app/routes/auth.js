@@ -32,11 +32,20 @@ router.post('/', function(req, res) {
 
 				// if user is found and password is right
 				// create a token
+				var name = user.name;
+				//we have to assign user.name and user.username to new variables and use
+				//them in jwt.sign(...) otherwise the expiresIn won't work. This is because
+				//the first arg of jws.sign(...) has be a plain object, while the 'user' return
+				//by mongoose is sth a little bit different than a plain object, so we extract
+				//data we needed from the 'user' and construct the plain object needed for jwt.sign(...)
+				var username = user.username;
 				var token = jwt.sign({
-					name: user.name,
-					username: user.username
+					name: name,
+					username: username
+					//name: user.name, //this won't work, see comments above
+					//username: user.username
 				}, secret , {
-					expiresIn: '24h' // expires in 24 hours
+					expiresIn: '8h' // expires in 8 hours
 				});
 
 				// return the information including token as JSON
@@ -52,6 +61,8 @@ router.post('/', function(req, res) {
 	});
 });
 
+/*
+//WARNING! DO NOT UNCOMMENT THIS CODE!
 router.post('/demoUser', function(req, res){
 	// look for the user named demo 
 	User.findOne({ 'username': 'demo' }, function(err, user) {
@@ -59,9 +70,9 @@ router.post('/demoUser', function(req, res){
 		// if there is no demo user, create one
 		if (!user) {
 			var demoUser = new User();
-			demoUser.name = 'Demo';  
-			demoUser.username = 'demo'; 
-			demoUser.password = '1234';
+			demoUser.name = 'Shiyi Chen';  
+			demoUser.username = 'Shiyi'; 
+			demoUser.password = 'Cacc';
 			demoUser.save();
 		} 
 		res.json({
@@ -70,5 +81,6 @@ router.post('/demoUser', function(req, res){
 		});
 	});
 });
+*/
 
 module.exports = router;

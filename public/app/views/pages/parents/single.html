@@ -1,0 +1,90 @@
+<div class="page-header">
+	<h1 ng-if="parent.type == 'create'">Add Parent</h1>
+	<h1 ng-if="parent.type == 'edit'">Edit Parent</h1>
+</div>
+
+<div class="panel-body">
+    <div class="container" ng-cloak>
+        <form ng-submit='parent.saveParent()'>
+            <div class="row">
+                <div class="form-group">
+                    <lable for="parentLastName">Last Name</lable>
+                    &nbsp;
+                    <input type="text" class="form-control"
+                            id="parentLastName" data-ng-model="parent.theParent.LName" style="width:100%"
+                            required>
+
+                    <lable for="">First Name</lable>
+                    &nbsp;
+                    <input type="text" class="form-control"
+                            id="" data-ng-model="parent.theParent.FName" style="width:100%"
+                            required>
+
+                    <lable for="">Chinese Name</lable>
+                    &nbsp;
+                    <input type="text" class="form-control"
+                            id="" data-ng-model="parent.theParent.CName" style="width:100%"
+                            >
+
+                    <lable for="">Address</lable>
+                    &nbsp;
+                    <input type="text" class="form-control"
+                            id="" data-ng-model="parent.theParent.Addr" style="width:100%"
+                            >
+
+                    <lable for="">City</lable>
+                    &nbsp;
+                    <input type="text" class="form-control"
+                            id="" data-ng-model="parent.theParent.City" style="width:100%"
+                            >
+
+                    <lable for="">State</lable>
+                    &nbsp;
+                    <input type="text" class="form-control"
+                            id="" data-ng-model="parent.theParent.State" style="width:100%"
+                            >
+
+                    <lable for="">Home Phone</lable>
+                    &nbsp;
+                    <input type="text" class="form-control"
+                            id="" data-ng-model="parent.theParent.HPhone" style="width:100%"
+                            >
+
+                    <lable for="">Work Phone</lable>
+                    &nbsp;
+                    <input type="text" class="form-control"
+                            id="" data-ng-model="parent.theParent.FWPhone" style="width:100%"
+                            >
+
+                    <lable for="">Mobile Phone</lable>
+                    &nbsp;
+                    <input type="text" class="form-control"
+                            id="" data-ng-model="parent.theParent.MWPhone" style="width:100%"
+                            >
+
+                    <lable for="">Email</lable>
+                    &nbsp;
+                    <input type="text" class="form-control"
+                            id="" data-ng-model="parent.theParent.EMail" style="width:100%"
+                            >
+                </div>
+            </div>
+            <div>&nbsp;</div>
+            <div class="row">
+                <div classs="form-group"> 
+                    <button type="submit" class="btn btn-success btn-lg" ng-if="parent.type == 'create'">Add Parent</button>
+                    <button type="submit" class="btn btn-success btn-lg" ng-if="parent.type == 'edit'">Update Parent</button>            
+                    <span ng-if="parent.processing"><span class="glyphicon glyphicon-repeat spinner"></span></span>
+                </div>
+            </div>
+            <div class="row show-hide-message" ng-show="parent.message">
+                <div classs="form-group"> 
+                    <button class="alert alert-info parentFormMessage">
+                        {{ parent.message }}
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

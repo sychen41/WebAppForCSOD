@@ -1,27 +1,30 @@
 <div class="page-header">
 	<h1>
         Students
+        <!-- you have to add a parent first, then add a student
 		<a href="/students/new" class="btn btn-default">
 			<span class="glyphicon glyphicon-plus"></span> 
 			New Student 
 		</a>
+        -->
+        <span ng-if="student.type == 'studentsOfAParent'">(Children of {{student.parentsName}})</span>
 	</h1>
+    <div class="alert alert-success" role="alert">Adding student can only be done through the "AddChild" button of a parent</div>
 
 </div>
 
-<!--
-<div class="jumbotron text-center" ng-show="user.processing">
+<div class="jumbotron text-center" ng-show="student.processing">
 	<span class="glyphicon glyphicon-repeat spinner"></span>
-	<p>Loading Students...</p>
-</div
--->
+    <p>{{student.processingMsg}}</p>
+</div>
 
 <table ng-table="student.tableParams" class="table table-condensed table-bordered table-striped">
     <!--'student' is used as the controllerAs name, so we use stu in the following line -->
     <tr ng-repeat="stu in $data">
-        <td data-title="'Last name'" filter="{LName: 'text'}" sortable="'LName'">{{stu.LName}}</td>
+        <td data-title="'Last name'" filter="student.lastNameFilter" sortable="'LName'">{{stu.LName}}</td>
         <td data-title="'First name'" filter="{FName: 'text'}" sortable="'FName'">{{stu.FName}}</td>
         <td data-title="'Chinese name'" filter="{CName: 'text'}" sortable="'CName'">{{stu.CName}}</td>
+        <td data-title="'Code'" filter="{CName: 'text'}" sortable="'Code'">{{stu.Code}}</td>
         <td data-title="'Date Of Birth'" filter="{DOB: 'text'}" sortable="'DOB'">{{student.parseDate(stu.DOB)}}</td>
         <td data-title="'Grade'" filter="{Grade: 'text'}" sortable="'Grade'">{{stu.Grade}}</td>
         <td data-title="'Age'" filter="{ofYrs: 'number'}" sortable="'ofYrs'">{{stu.ofYrs}}</td>
@@ -31,7 +34,13 @@
             <a href='/students/{{stu.StudentKey}}/edit' class='btn btn-success btn-xs'>Edit</a>
         </td>
         <td class='actionBtn'>
+            <a href='/parents/{{stu.ParentKey}}/studentName/{{stu.FName + " " + stu.LName + " " + stu.CName}}' class='btn btn-success btn-xs'>ShowParent</a>
+        </td>
+        <td class='actionBtn'>
             <button class='btn btn-danger btn-xs' ng-click='student.deleteStudent(stu.StudentKey)'>Delete
         </td>
     </tr>
-</table
+</table>
+<div class="row show-hide-message" ng-show="student.message">
+    <div class="alert alert-danger" role="alert">{{student.message}}</div>
+</div>

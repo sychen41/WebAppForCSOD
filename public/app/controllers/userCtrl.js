@@ -9,13 +9,38 @@ angular.module('userCtrl', ['userService'])
 
 	// grab all the users at page load
 	User.all()
-		.then(function(data) {
-			// when all the users come back, remove the processing variable
+		//note: using '.success' and '.then' is different. 
+		//'.success' triggers when status code is OK, and gives you only the data you need. 
+		//'.then' simply gives you the whole response, including
+		//status code, you decide what to do with the response.
+		.success(function(data){
+			// when received response from server, remove the processing variable
 			vm.processing = false;
-
-			// bind the users that come back to vm.users
-			vm.users = data.data;
+			//verify token failed
+			if(data.success === false){
+				vm.message = data.message;
+			} else {
+				// bind the users that come back to vm.users
+				vm.users = data;
+			}
+         })
+         .error(function(err){
+            console.log("Error: " + err);
+         });
+		/*
+		.then(function(data) {
+			//console.log(data);
+			// when received response from server, remove the processing variable
+			vm.processing = false;
+			//verify token failed
+			if(data.data.success === false){
+				vm.message = data.data.message;
+			} else {
+				// bind the users that come back to vm.users
+				vm.users = data.data;
+			}
 		});
+		*/
 
 	// function to delete a user
 	vm.deleteUser = function(id) {

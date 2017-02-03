@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h1 ng-if="student.type == 'create'">Add Student</h1>
+    <h1 ng-if="student.type == 'create'">Add Student (child of {{student.parentsName}})</h1>
 	<h1 ng-if="student.type == 'edit'">Edit Student</h1>
 </div>
 
@@ -24,6 +24,12 @@
                     &nbsp;
                     <input type="text" class="form-control"
                             id="" data-ng-model="student.theStudent.CName" style="width:100%"
+                            >
+
+                    <lable for="">Code</lable>
+                    &nbsp;
+                    <input type="text" class="form-control"
+                            id="" data-ng-model="student.theStudent.Code" style="width:100%"
                             >
 
                     <div ng-if="student.type == 'create'">

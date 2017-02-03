@@ -40,20 +40,53 @@ angular.module('app.routes', ['ngRoute'])
 
         //for students
         .when('/students', {
-			templateUrl: 'app/views/pages/studentsDev/all.html',
+			//templateUrl: 'app/views/pages/studentsDev/all.html',
+			templateUrl: 'app/views/pages/students/all.html',
         	controller: 'studentController',
 			controllerAs: 'student'
         })
-        .when('/students/new', {
-			templateUrl: 'app/views/pages/studentsDev/single.html',
+        .when('/students/new/:parent_id/parentsName/:parents_name', {
+			//templateUrl: 'app/views/pages/studentsDev/single.html',
+			templateUrl: 'app/views/pages/students/single.html',
             controller: 'studentCreateController',
 			controllerAs: 'student'
         })
+        .when('/students/:parent_id/parentsName/:parents_name', {
+			//templateUrl: 'app/views/pages/studentsDev/single.html',
+			templateUrl: 'app/views/pages/students/all.html',
+            controller: 'studentController',
+			controllerAs: 'student'
+        })
         .when('/students/:id/edit', {
-			templateUrl: 'app/views/pages/studentsDev/single.html',
+			//templateUrl: 'app/views/pages/studentsDev/single.html',
+			templateUrl: 'app/views/pages/students/single.html',
             controller: 'studentEditController',
 			controllerAs: 'student'
+        })
+
+		//for parents
+        .when('/parents', {
+			templateUrl: 'app/views/pages/parents/all.html',
+        	controller: 'parentController',
+			controllerAs: 'parent'
+        })
+        .when('/parents/new/', {
+			templateUrl: 'app/views/pages/parents/single.html',
+            controller: 'parentCreateController',
+			controllerAs: 'parent'
+        })
+        .when('/parents/:id/edit', {
+			templateUrl: 'app/views/pages/parents/single.html',
+            controller: 'parentEditController',
+			controllerAs: 'parent'
+        })
+        .when('/parents/:id/studentName/:student_name', {
+			templateUrl: 'app/views/pages/parents/all.html',
+            controller: 'parentController',
+			controllerAs: 'parent'
         });
+
+
 
 	$locationProvider.html5Mode(true);
 

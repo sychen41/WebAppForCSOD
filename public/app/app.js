@@ -5,9 +5,11 @@ angular.module('userApp',
 				'authService', 
 				'userService',
 				'studentService',
+				'parentService',
 				'mainCtrl',
 				'userCtrl',
-				'studentCtrl' 
+				'studentCtrl',
+				'parentCtrl' 
 			])
 
 // application configuration to integrate token into requests

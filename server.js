@@ -10,6 +10,7 @@ var CORShandler = require('./app/middleware').handleCORSrequests;
 var authRoutes 	= require('./app/routes/auth');
 var usersRoutes = require('./app/routes/users');
 var studentsRoutes = require('./app/routes/students');
+var parentsRoutes = require('./app/routes/parents');
 
 // get our request parameters
 //parse data in the form of x-www-form-urlencoded, http header: content-type: applicaion/x-www-form-urlencoded
@@ -33,6 +34,7 @@ app.use('/api/authentication', authRoutes);
 //protected routes that need to verify token
 app.use('/api/users/', usersRoutes);
 app.use('/api/students/',studentsRoutes);
+app.use('/api/parents/',parentsRoutes);
 //end of protected routes
 
 // MAIN CATCHALL ROUTE --------------- 
@@ -43,7 +45,7 @@ app.get('*', function(req, res) {
 });
 //END OF ROUTES
 
-var port = process.env.PORT || '8085';
+var port = process.env.PORT || '8084';
 app.listen(port, process.env.IP, function(){
 	console.log('CSOD web app is listening to ' + port);
 });

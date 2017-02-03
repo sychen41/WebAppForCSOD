@@ -1,0 +1,47 @@
+<div class="page-header">
+	<h1>
+        Parents
+		<a ng-if="parent.type == 'allParents'" href="/parents/new" class="btn btn-default">
+			<span class="glyphicon glyphicon-plus"></span> 
+			New Parent 
+		</a>
+        <span ng-if="parent.type == 'parentsOfAStudent'">of {{parent.studentName}}</span>
+	</h1>
+
+</div>
+
+<div class="jumbotron text-center" ng-show="parent.processing">
+	<span class="glyphicon glyphicon-repeat spinner"></span>
+    <p>{{parent.processingMsg}}</p>
+</div>
+
+<table ng-table="parent.tableParams" class="table table-condensed table-bordered table-striped">
+    <!--'parent' is used as the controllerAs name, so we use par in the following line -->
+    <tr ng-repeat="par in $data">
+        <td data-title="'Last name'" filter="{LName: 'text'}" sortable="'LName'">{{par.LName}}</td>
+        <td data-title="'First name'" filter="{FName: 'text'}" sortable="'FName'">{{par.FName}}</td>
+        <td data-title="'Chinese name'" filter="{CName: 'text'}" sortable="'CName'">{{par.CName}}</td>
+        <td data-title="'Address'" filter="{Addr: 'text'}" sortable="'Addr'">{{par.Addr}}</td>
+        <td data-title="'City'" filter="{City: 'text'}" sortable="'City'">{{par.City}}</td>
+        <td data-title="'State'" filter="{State: 'text'}" sortable="'State'">{{par.State}}</td>
+        <td data-title="'Home Phone'" filter="{HPhone: 'text'}" sortable="'HPhone'">{{par.HPhone}}</td>
+        <td data-title="'Work Phone'" filter="{FWPhone: 'text'}" sortable="'FWPhone'">{{par.FWPhone}}</td>
+        <td data-title="'Mobile Phone'" filter="{MWPhone: 'text'}" sortable="'MWPhone'">{{par.MWPhone}}</td>
+        <td data-title="'Email'" filter="{Email: 'text'}" sortable="'EMail'">{{par.EMail}}</td>
+        <td class='actionBtn'>
+            <a href='/parents/{{par.ParentKey}}/edit' class='btn btn-success btn-xs'>Edit</a>
+        </td>
+        <td class='actionBtn'>
+            <a href='/students/{{par.ParentKey}}/parentsName/{{par.FName + " " + par.LName + " " + par.CName}}' class='btn btn-success btn-xs'>ShowChildren</a>
+        </td>
+        <td class='actionBtn'>
+            <a href='/students/new/{{par.ParentKey}}/parentsName/{{par.FName + " " + par.LName + " " + par.CName}}' class='btn btn-success btn-xs'>AddChild</a>
+        </td>
+        <td class='actionBtn'>
+            <button class='btn btn-danger btn-xs' ng-click='parent.deleteParent(par.ParentKey)'>Delete
+        </td>
+    </tr>
+</table>
+<div class="row show-hide-message" ng-show="parent.message">
+    <div class="alert alert-danger" role="alert">{{parent.message}}</div>
+</div>

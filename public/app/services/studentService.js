@@ -11,6 +11,9 @@ angular.module('studentService', [])
     studentFactory.getStudentById = function(id) {
         return $http.get('api/students/'+id);
     };
+    studentFactory.getStudentsByParentId = function(parent_id) {
+        return $http.get('api/students/parentId/'+parent_id);
+    };
     studentFactory.updateStudent = function(id, theStudent) {
         return $http.put('api/students/'+id, theStudent);
     };
